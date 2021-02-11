@@ -42,3 +42,23 @@ function dividedBy(innerVal) {
         return (outerVal / innerVal);
     };
 }
+
+
+// Exercise:
+// Input: two n-bit arrays A and B, storing n-bit binary integer values as elements. 
+// Output: An n+1-bit array C, storing the sum of the values stored in arrays A and B
+
+function sumBinArrays(arr1, arr2){ 
+    let result = new Array(arr1.length+1);
+    result.fill(0);
+
+    for (let i=arr1.length-1; i>=0; i--) {
+        let sum = arr1[i] + arr2[i];
+        result[i+1] += sum;
+        if (result[i+1] === 2) {
+            result[i+1] = 0;
+            result[i] = 1;
+        }
+    }
+    return result;
+}
